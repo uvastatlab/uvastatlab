@@ -1,0 +1,125 @@
+---
+title: "StatLab Consultation Report"
+author: "Clay Ford"
+date: "`r Sys.Date()`"
+output: html_document
+params:
+  csv: ""
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r echo=FALSE, message=FALSE}
+library(lubridate)
+
+d <- read.csv(params$csv)
+d$Date.of.the.interaction <- ymd_hms(d$Date.of.the.interaction)
+d$Month <- month(d$Date.of.the.interaction, label = TRUE)
+d$Month <- droplevels(d$Month)
+d$Attendee.Type <- factor(d$Attendee.Type)
+d$School <- factor(d$School)
+d$Topic <- factor(d$Topic)
+d$Source.Software <- ifelse(d$Source.Software == "python", 
+                            "Python", d$Source.Software)
+d$Source.Software <- ifelse(d$Source.Software == "GraphPad Prism", 
+                            "Prism", d$Source.Software)
+
+```
+
+## Summaries
+
+### Total consultations
+
+
+```{r}
+nrow(d)
+```
+
+Total consultations for Clay:
+
+```{r}
+i <- grepl(pattern = "handle", d$Additional.Notes)
+d <- d[!i,]
+nrow(d)
+```
+
+Total consultations for StatLab associates:
+
+```{r}
+sum(i)
+
+```
+
+
+
+### Total consultations by Month
+
+```{r}
+xtabs(~ Month, data = d) |> 
+  as.data.frame()
+xtabs(~ Month, data = d) |> 
+  barplot()
+
+```
+
+### Total consultations by Attendee Type
+
+```{r}
+xtabs(~ Attendee.Type, data = d) |> 
+  sort(decreasing = TRUE) |> 
+  as.data.frame()
+```
+
+
+### Total consultations by Topic
+
+```{r}
+xtabs(~ Topic, data = d) |> 
+  sort(decreasing = TRUE) |> 
+  as.data.frame()
+```
+
+### Total consultations by Software
+
+```{r}
+# empty label means "no software involved"
+xtabs(~ Source.Software, data = d) |> 
+  sort(decreasing = TRUE) |> 
+  as.data.frame()
+```
+
+### Total consultations by School
+
+```{r}
+xtabs(~ School, data = d) |> 
+  sort(decreasing = TRUE) |> 
+  as.data.frame()
+```
+
+### Consultation duration
+
+
+```{r}
+summary(d$Session.Duration)
+hist(d$Session.Duration)
+```
+
+### Unique patrons
+
+```{r}
+unique(d$Primary.User.s.Computing.ID) |> length()
+```
+
+### Consultations per patron
+
+
+```{r}
+xtabs(~ Primary.User.s.Computing.ID, data = d) |> 
+  table(dnn = "visits") |> proportions() |>
+  round(2) |>
+  as.data.frame()
+```
+
