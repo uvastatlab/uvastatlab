@@ -1,10 +1,10 @@
 #' Prepare blog post for UVA StatLab WordPress site
 #' @description
-#' \code{wp()} takes an HTML file generated from an R Markdown file in RStudio and makes various changes to the code so it can be copied and pasted into the UVA StatLab Wordpress site.
+#' \code{wp()} takes an HTML file generated from an R Markdown file in RStudio and makes various changes to the code so it can be copied and pasted into the UVA StatLab WordPress site. This should work for files with both R and Python code chunks.
 #'
 #' @param file an HTML file knitted from R Markdown
 #'
-#' @return An HTML file of the same name as the file argument with "WP_" prepended. Will be written to the current working directory. Open the file with a text editor and copy and paste contents into a new Wordpress post.
+#' @return An HTML file of the same name as the file argument with "WP_" prepended. Will be written to the current working directory. Open the file with a text editor and copy and paste contents into a new WordPress post.
 #' @export
 #'
 #' @examples
@@ -26,7 +26,7 @@ wp <- function(file) {
   p <- sub(pattern = "</div>$", "", p) |> stringr::str_trim()
 
   # opening code tags
-  p <- gsub(pattern = '<pre class=\"r\"><code>',
+  p <- gsub(pattern = '<pre class=(\"r\"|\"python\")><code>',
             replacement = '<div style=\"padding-left: 40px; font-size: 80%\"><pre>\n',
             p)
 
