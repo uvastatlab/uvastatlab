@@ -31,7 +31,7 @@ wp <- function(file, name) {
 
   # Prep html for RDS Wordpress
   # read HTML into single vector
-  p <- readLines(file, encoding = "UTF-8") |>
+  p <- readLines(file) |>
     paste(collapse = "\n")
   # drop everything before the opening paragraph
   p <- sub(pattern = "<!DOCTYPE html>.+?</div>", replacement = "", p)
@@ -74,9 +74,15 @@ wp <- function(file, name) {
             p, perl = TRUE)
 
   # add footer
-  footer <- paste0('For questions or clarifications regarding this article, contact the UVA Library StatLab: <a href=\"mailto:statlab@virginia.edu\">statlab@virginia.edu</a>\n\n<a href=\"https://data.library.virginia.edu/category/statlab-articles/\">View the entire collection</a> of UVA Library StatLab articles.\n\n<em>', name, '\nStatistical Research Consultant\nUniversity of Virginia Library\n',date,'</em>')
-  p <- paste(p, footer, collapse = "\n")
+  footer <- paste0('For questions or clarifications regarding this article, contact the UVA Library StatLab: <a href=\"mailto:statlab@virginia.edu\">statlab@virginia.edu</a>\n\n<a href=\"https://data.library.virginia.edu/category/statlab-articles/\">View the entire collection</a> of UVA Library StatLab articles.\n\n<em>', name, '\nStatistical Research Consultant\nUniversity of Virginia Library\n', date, '</em>')
 
+  # deal with any footnotes
+  if(grepl('<div class=\"footnotes [^>]+>', p)){
+    pattern <- '(<div class=\"footnotes [^>]+>)'
+    replacement <- paste0("\n", footer, "\n\n\\1")
+    p <- sub(pattern = pattern,
+             replacement = replacement, p, perl = TRUE)
+    } else p <- paste(p, footer, collapse = "\n")
   writeLines(p, con = paste0("WP_", basename(file)))
 }
 
