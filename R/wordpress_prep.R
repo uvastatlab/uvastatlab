@@ -11,6 +11,7 @@
 #'     pandoc_args: ["--wrap=none"]}
 #'
 #' @param file an HTML file knitted from R Markdown
+#' @param name name of blog post author as character string
 #'
 #' @return An HTML file of the same name as the file argument with "WP_" prepended. Will be written to the current working directory. Open the file with a text editor and copy and paste contents into a new WordPress post.
 #' @export
@@ -20,7 +21,14 @@
 #' wp("somefile.html")
 #' # WP_somefile.html output to working directory.
 #' }
-wp <- function(file) {
+wp <- function(file, name) {
+  if(!grepl(".(htm|html)$", file)) stop("Function requires HTML file.")
+
+  if(missing(name)) stop("Provide name of author using name argument.")
+  if(name == "Clay Ford") name <- '<a href=\"https://data.library.virginia.edu/tag/clay-ford/\">Clay Ford</a>'
+
+  date <- format(Sys.Date(), "%B %d, %Y")
+
   # Prep html for RDS Wordpress
   # read HTML into single vector
   p <- readLines(file, encoding = "UTF-8") |>
@@ -61,7 +69,10 @@ wp <- function(file) {
             replacement = replacement,
             p, perl = TRUE)
 
-  # TO DO:add footer
+  # add footer
+  footer <- paste0('For questions or clarifications regarding this article, contact the UVA Library StatLab: <a href=\"mailto:statlab@virginia.edu\">statlab@virginia.edu</a>\n\n<a href=\"https://data.library.virginia.edu/category/statlab-articles/\">View the entire collection</a> of UVA Library StatLab articles.\n\n<em>', name, '\nStatistical Research Consultant\nUniversity of Virginia Library\n',date,'</em>')
+  p <- paste(p, footer, collapse = "\n")
+
   writeLines(p, con = paste0("WP_", basename(file)))
 }
 

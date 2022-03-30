@@ -4,10 +4,12 @@
 \alias{wp}
 \title{Prepare blog post for UVA StatLab WordPress site}
 \usage{
-wp(file)
+wp(file, name)
 }
 \arguments{
 \item{file}{an HTML file knitted from R Markdown}
+
+\item{name}{name of blog post author as character string}
 }
 \value{
 An HTML file of the same name as the file argument with "WP_" prepended. Will be written to the current working directory. Open the file with a text editor and copy and paste contents into a new WordPress post.
