@@ -60,7 +60,7 @@ wp <- function(file, name) {
   # tagging: <a href[^<>]+ is tagged with ()
   # Since it is tagged, it is used in the replacement as \\1 where
   # the attributes are added directly after it
-  p <- gsub(pattern = '(<a href[^<>]+)',
+  p <- gsub(pattern = '(<a href=\"[^#][^<>]+)',
             replacement = '\\1 target=\"_blank\" rel=\"noopener noreferrer\"',
             p, perl = TRUE)
 
