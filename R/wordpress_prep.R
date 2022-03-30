@@ -57,12 +57,16 @@ wp <- function(file, name) {
             p, perl = TRUE)
 
   # add  target="_blank" rel="noopener noreferrer" to links
-  # /(<a href[^<>]+)>/is', '\\1 target="_blank"
+  # tagging: <a href[^<>]+ is tagged with ()
+  # Since it is tagged, it is used in the replacement as \\1 where
+  # the attributes are added directly after it
   p <- gsub(pattern = '(<a href[^<>]+)',
             replacement = '\\1 target=\"_blank\" rel=\"noopener noreferrer\"',
             p, perl = TRUE)
 
   # add image placeholders
+  # the file name is tagged: ((?<=/)[^/]+\\.(png|jpg))
+  # it is used in the replacement as \\1
   pattern <- '<p><img src=.+((?<=/)[^/]+\\.(png|jpg))\\".+</p>'
   replacement <- "\n\n\n*** IMAGE PLACEHOLDER: \\1 ***\n\n\n"
   p <- gsub(pattern = pattern,
