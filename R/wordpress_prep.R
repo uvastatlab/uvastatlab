@@ -2,6 +2,14 @@
 #' @description
 #' \code{wp()} takes an HTML file generated from an R Markdown file in RStudio and makes various changes to the code so it can be copied and pasted into the UVA StatLab WordPress site. This should work for files with both R and Python code chunks.
 #'
+#' IMPORTANT: The YAML header of the Rmd file should have output set as follows:
+#'
+#' \preformatted{
+#' output:
+#'   html_document:
+#'     self_contained: no
+#'     pandoc_args: ["--wrap=none"]}
+#'
 #' @param file an HTML file knitted from R Markdown
 #'
 #' @return An HTML file of the same name as the file argument with "WP_" prepended. Will be written to the current working directory. Open the file with a text editor and copy and paste contents into a new WordPress post.
