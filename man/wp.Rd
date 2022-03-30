@@ -27,7 +27,7 @@ output:
 }
 \examples{
 \dontrun{
-wp("somefile.html")
+wp("somefile.html", name = "Clay Ford")
 # WP_somefile.html output to working directory.
 }
 }
