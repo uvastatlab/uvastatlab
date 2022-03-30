@@ -57,7 +57,9 @@ wp <- function(file) {
   # add image placeholders
   pattern <- '<p><img src=.+((?<=/)[^/]+\\.(png|jpg))\\".+</p>'
   replacement <- "\n\n\n*** IMAGE PLACEHOLDER: \\1 ***\n\n\n"
-  p <- gsub(pattern = pattern, replacement = replacement, p, perl = TRUE)
+  p <- gsub(pattern = pattern,
+            replacement = replacement,
+            p, perl = TRUE)
 
   # TO DO:add footer
   writeLines(p, con = paste0("WP_", basename(file)))
