@@ -10,7 +10,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' wp("dataset-17737-20211214162235.csv")
+#' report("dataset-17737-20211214162235.csv")
 #' # statlab_consultations_report.html output to working directory.
 #' }
 report <- function(file){

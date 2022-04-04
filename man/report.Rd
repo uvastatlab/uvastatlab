@@ -17,7 +17,7 @@ an HTML report in the current working directory. The Rmd file is in the package 
 }
 \examples{
 \dontrun{
-wp("dataset-17737-20211214162235.csv")
+report("dataset-17737-20211214162235.csv")
 # statlab_consultations_report.html output to working directory.
 }
 }
