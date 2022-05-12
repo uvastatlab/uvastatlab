@@ -15,7 +15,7 @@
 #' }
 report <- function(file){
   if(!require(lubridate, quietly = TRUE)){
-    install.packages("lubridate")
+    utils::install.packages("lubridate")
   }
   wd <- getwd()
   # get Rmd file
