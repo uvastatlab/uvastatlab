@@ -83,6 +83,6 @@ wp <- function(file, name) {
     p <- sub(pattern = pattern,
              replacement = replacement, p, perl = TRUE)
     } else p <- paste(p, footer, collapse = "\n")
-  writeLines(p, con = paste0("WP_", basename(file)))
+  writeLines(p, con = paste0("WP_", basename(file)), useBytes = TRUE)
 }
 
