@@ -13,7 +13,7 @@ report(file)
 an HTML report in the current working directory. The Rmd file is in the package inst folder under the rmd subdirectory.
 }
 \description{
-\code{report()} takes a CSV file exported from LibInsight dataset "5 - RDS+SNE Consultations & Collaborations" and creates a quick HTML report of various consultation statistics in the current working directory. The Rmd file requires the lubridate package, therefore the \code{report()} function checks if lubridate is installed. If not, lubridate is installed before the report is run.
+\code{report()} takes a CSV file exported from LibInsight dataset "5 - RDS+SNE Consultations & Collaborations" and creates a quick HTML report of various consultation statistics in the current working directory. The Rmd file requires the lubridate package be installed.
 }
 \examples{
 \dontrun{

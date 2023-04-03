@@ -13,11 +13,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ```{r echo=FALSE, message=FALSE}
-library(lubridate)
-
 d <- read.csv(params$csv)
-d$Date.of.the.interaction <- ymd_hms(d$Date.of.the.interaction)
-d$Month <- month(d$Date.of.the.interaction, label = TRUE)
+d$Date.of.the.interaction <- lubridate::ymd_hms(d$Date.of.the.interaction)
+d$Month <- lubridate::month(d$Date.of.the.interaction, label = TRUE)
 d$Month <- droplevels(d$Month)
 d$Attendee.Type <- factor(d$Attendee.Type)
 d$School <- factor(d$School)

@@ -1,6 +1,6 @@
 #' Generate quick report of StatLab consultation statistics
 #' @description
-#' \code{report()} takes a CSV file exported from LibInsight dataset "5 - RDS+SNE Consultations & Collaborations" and creates a quick HTML report of various consultation statistics in the current working directory. The Rmd file requires the lubridate package, therefore the \code{report()} function checks if lubridate is installed. If not, lubridate is installed before the report is run.
+#' \code{report()} takes a CSV file exported from LibInsight dataset "5 - RDS+SNE Consultations & Collaborations" and creates a quick HTML report of various consultation statistics in the current working directory. The Rmd file requires the lubridate package be installed.
 #'
 #'
 #' @param file a CSV file exported from the LibInsight dataset "5 - RDS+SNE Consultations & Collaborations"
@@ -14,9 +14,6 @@
 #' # statlab_consultations_report.html output to working directory.
 #' }
 report <- function(file){
-  if(!require(lubridate, quietly = TRUE)){
-    utils::install.packages("lubridate")
-  }
   wd <- getwd()
   # get Rmd file
   rmd <- system.file("rmd",
