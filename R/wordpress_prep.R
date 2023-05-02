@@ -43,17 +43,17 @@ wp <- function(file, name) {
 
   # opening code tags
   p <- gsub(pattern = '<pre class=(\"r\"|\"python\")><code>',
-            replacement = '<div style=\"padding-left: 40px; font-size: 80%\"><pre>\n',
+            replacement = '<div style=\"padding-left: 40px; font-size: 80%;background-color: #E9ECEF\"><pre>\n',
             p)
 
   # closing code tags
   p <- gsub(pattern = '</code></pre>(?!\n<pre><code>)',
-            replacement = '\n\n</pre></div>',
+            replacement = '\n</pre></div><br>',
             p, perl = TRUE)
 
   # remove </code></pre>\n<pre><code> before output
   p <- gsub(pattern = '</code></pre>\n<pre><code>',
-            replacement = '\n',
+            replacement = '\n</pre></div><br><div style=\"padding-left: 40px; font-size: 80%\"><pre>\n',
             p, perl = TRUE)
 
   # add  target="_blank" rel="noopener noreferrer" to links
