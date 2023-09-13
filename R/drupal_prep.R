@@ -37,18 +37,18 @@ drupal <- function(file) {
 
   # opening code block
   p <- gsub(pattern = '<pre class=(\"r\"|\"python\")><code>',
-            replacement = '<div class="rds-article--code" aria-label="code"><pre><code>\n',
+            replacement = '<div class="rds-article--code" aria-label="code">\n<pre>\n<code>\n',
             p)
 
   # opening output block
   # find <pre><code> at start of line
   p <- gsub(pattern = '\n<pre><code>',
-            replacement = '\n<div class="rds-article--output" aria-label="output"><pre><code>\n',
+            replacement = '\n<div class="rds-article--output" aria-label="output">\n<pre>\n<code>\n',
             p)
 
   # closing code and output blocks
   p <- gsub(pattern = '</code></pre>',
-            replacement = '\n</code></pre></div>',
+            replacement = '\n</code>\n</pre>\n</div>',
             p)
 
   # add  target="_blank" rel="noopener noreferrer" to links
