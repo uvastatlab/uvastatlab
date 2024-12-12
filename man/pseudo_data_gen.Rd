@@ -18,7 +18,7 @@ pseudo_data_gen(n = 1, mu, Sigma, tol = 1e-06, empirical = TRUE)
 \item{empirical}{logical (default is TRUE). Which procedure to use.}
 }
 \value{
-Returns a matrix for multiple variables, a vector for single variables
+Matrix
 }
 \description{
 This function generates data from summary statistics that in turn have the same summary statistics. This can be useful to replicate analyses for which we only have summary statistics. See reference and example.

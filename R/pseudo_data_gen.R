@@ -8,7 +8,7 @@
 #' @param tol used to confirm Sigma is positive definite
 #' @param empirical logical (default is TRUE). Which procedure to use.
 #'
-#' @return Returns a matrix for multiple variables, a vector for single variables
+#' @return Matrix
 #' @export
 #'
 #' @importFrom stats runif
