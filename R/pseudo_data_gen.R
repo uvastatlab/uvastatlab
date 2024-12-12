@@ -1,6 +1,10 @@
 #' Generate pseudo-data using summary statistics
 #'
-#' @description This function generates data from summary statistics that in turn have the same summary statistics. This can be useful to replicate analyses for which we only have summary statistics. See reference and example.
+#' @description This function generates data from summary statistics that in
+#'   turn have the same summary statistics. This can be useful to replicate
+#'   analyses for which we only have summary statistics. See reference and
+#'   example. Code comes from
+#'   \url{https://github.com/lizlimpocouhasselt/LMM-from-summary-statistics}.
 #'
 #' @param n number of observations to generate
 #' @param mu mean
@@ -13,7 +17,9 @@
 #'
 #' @importFrom stats runif
 #'
-#' @references Limpoco, M.A.A., Faes, C. and Hens, N. (2024), Linear Mixed Modeling of Federated Data When Only the Mean, Covariance, and Sample Size Are Available. Statistics in Medicine. https://doi.org/10.1002/sim.10300
+#' @references Limpoco, M.A.A., Faes, C. and Hens, N. (2024), Linear Mixed
+#'   Modeling of Federated Data When Only the Mean, Covariance, and Sample Size
+#'   Are Available. Statistics in Medicine. https://doi.org/10.1002/sim.10300
 #'
 #' @examples
 #' # using the Swiss data that come with R
@@ -35,6 +41,9 @@
 #' m2 <- lm(Fertility ~ ., data = pseudo_swiss)
 #' all.equal(coef(m1), coef(m2))
 #' # [1] TRUE
+#'
+#' summary(m1)$coefficients
+#' summary(m2)$coefficients
 pseudo_data_gen <- function (n = 1, mu, Sigma, tol = 1e-06, empirical = TRUE)
 {
   p <- length(mu)
