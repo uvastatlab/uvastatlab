@@ -13,9 +13,8 @@
 #' @param empirical logical (default is TRUE). Which procedure to use.
 #'
 #' @return Matrix
-#' @export
 #'
-#' @importFrom stats runif
+#' @export
 #'
 #' @references Limpoco, M.A.A., Faes, C. and Hens, N. (2024), Linear Mixed
 #'   Modeling of Federated Data When Only the Mean, Covariance, and Sample Size
@@ -53,7 +52,7 @@ pseudo_data_gen <- function (n = 1, mu, Sigma, tol = 1e-06, empirical = TRUE)
   ev <- eS$values
   if (!all(ev >= -tol * abs(ev[1L])))
     stop("'Sigma' is not positive definite")
-  X <- matrix(runif(p * n), n) #changed from rnorm to runif
+  X <- matrix(stats::runif(p * n), n) #changed from rnorm to runif
   if (empirical) {
     X <- scale(X, TRUE, FALSE)
     X <- apply(X, 2, function(column) ifelse(is.na(column), 0, column))

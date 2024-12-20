@@ -14,7 +14,7 @@
 #' @param name name of blog post author as character string
 #'
 #' @return An HTML file of the same name as the file argument with "WP_" prepended. Will be written to the current working directory. Open the file with a text editor and copy and paste contents into a new WordPress post.
-#' @export
+#' @noRd
 #'
 #' @examples
 #' \dontrun{

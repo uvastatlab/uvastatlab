@@ -7,7 +7,7 @@
 #' @examples
 #' \dontrun{get_statlab_article_metadata()}
 #'
-#' @export
+#' @noRd
 get_statlab_article_metadata <- function() {
   start <- Sys.time()
   # Initial parameters
