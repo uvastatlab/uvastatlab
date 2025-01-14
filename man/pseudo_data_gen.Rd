@@ -22,10 +22,10 @@ Matrix
 }
 \description{
 This function generates data from summary statistics that in
-  turn have the same summary statistics. This can be useful to replicate
-  analyses for which we only have summary statistics. See reference and
-  example. Code comes from
-  \url{https://github.com/lizlimpocouhasselt/LMM-from-summary-statistics}.
+turn have the same summary statistics. This can be useful to replicate
+analyses for which we only have summary statistics. See reference and
+example. Code comes from
+\url{https://github.com/lizlimpocouhasselt/LMM-from-summary-statistics}.
 }
 \examples{
 # using the Swiss data that come with R
@@ -53,6 +53,6 @@ summary(m2)$coefficients
 }
 \references{
 Limpoco, M.A.A., Faes, C. and Hens, N. (2024), Linear Mixed
-  Modeling of Federated Data When Only the Mean, Covariance, and Sample Size
-  Are Available. Statistics in Medicine. https://doi.org/10.1002/sim.10300
+Modeling of Federated Data When Only the Mean, Covariance, and Sample Size
+Are Available. Statistics in Medicine. https://doi.org/10.1002/sim.10300
 }

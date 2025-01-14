@@ -13,7 +13,7 @@ returns a list of available Shiny apps, albeit as an error message.}
 }
 \value{
 Opens the requested Shiny app in RStudio or a web browser, depending
-  on your setup.
+on your setup.
 }
 \description{
 \code{runShinyApp} runs the specified Shiny app.
@@ -26,12 +26,12 @@ This function is basically a copy of the function in Dean Attali's blog post,
 \section{Available Shiny apps}{
 
 \describe{
-  \item{ci}{illustrates confidence intervals}
-  \item{correlation}{visualizes correlation via scatterplot}
-  \item{interactions}{visualizes the effect of continuous interactions}
-  \item{lme}{simulates and fits linear mixed-effects models and demonstrates random and fixed effects}
-  \item{nhst}{visualizes power, sample size, and Type I and II errors in the context of a one-sample proportion test}
-  \item{passa}{runs power and sample size analyses for one- and two-sample proportion tests, t-tests, and one-way ANOVAs}
+\item{ci}{illustrates confidence intervals}
+\item{correlation}{visualizes correlation via scatterplot}
+\item{interactions}{visualizes the effect of continuous interactions}
+\item{lme}{simulates and fits linear mixed-effects models and demonstrates random and fixed effects}
+\item{nhst}{visualizes power, sample size, and Type I and II errors in the context of a one-sample proportion test}
+\item{passa}{runs power and sample size analyses for one- and two-sample proportion tests, t-tests, and one-way ANOVAs}
 }
 }
 
