@@ -24,6 +24,18 @@ Install from GitHub:
 8. Run `devtools::check()` (Ctrl/Cmd + Shift + E)
 9. Run `devtools::install()` to install package and restart R (Ctrl/Cmd + Shift + B). Load the package, test the function, review the documentation.
 
+## Adding a data set to the package
+
+- Package data goes in data/. Each file in this directory should be an .rda file created by `save()` containing a single R object, with the same name as the file. The easiest way to achieve this is to use `usethis::use_data()`. Example:
+````
+my_pkg_data <- sample(1000)
+usethis::use_data(my_pkg_data)
+````
+- The snippet above creates data/my_pkg_data.rda inside the source of the pkg package and adds `LazyData: true` in the DESCRIPTION (if not already there). If the DESCRIPTION contains `LazyData: true`, then datasets will be lazily loaded. This means that they won’t occupy any memory until you use them. 
+- Code to prep data should be stored in one or more .R files below data-raw/. `usethis::use_data_raw()` creates the data-raw/ folder and lists it in .Rbuildignore. (This has already been done.) A typical script in data-raw/ includes code to prepare a dataset and ends with a call to `usethis::use_data()`. See the wheat.R script as an example.
+- Documenting dataset: use Roxygen template in the data.R file below R/. The "R code" is the name of the data set in quotes. See https://r-pkgs.org/data.html#sec-documenting-data for an example. Multiple data sets can be listed in the data.R file. Run `devtools::document()` to preview help page.
+
+
 ## Resources
 
 - https://r-pkgs.org/ (online book)
