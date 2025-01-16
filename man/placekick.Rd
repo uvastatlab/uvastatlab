@@ -5,7 +5,7 @@
 \alias{placekick}
 \title{NFL placekicking data}
 \format{
-A data frame with 1425 rows and 9 columns:
+A data frame with 1425 observations and 9 variables:
 \describe{
 \item{week}{week of the season}
 \item{distance}{distance of the placekick in yards}
@@ -26,7 +26,11 @@ A data frame with 1425 rows and 9 columns:
 placekick
 }
 \description{
-Data on the results of placekicks in the NFL. This is a good data set for demonstrating logisitic regression.
+Data on the results of placekicks in the NFL. This is a good data set for demonstrating logistic regression.
+}
+\examples{
+m <- glm(good ~ distance, data = placekick, family = binomial)
+exp(confint(m))
 }
 \references{
 Bilder CR and Loughin TM. (2015) \emph{Analysis of Categorical Data with R}. CRC Press.

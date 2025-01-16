@@ -1,10 +1,10 @@
 #' NFL placekicking data
 #'
-#' Data on the results of placekicks in the NFL. This is a good data set for demonstrating logisitic regression.
+#' Data on the results of placekicks in the NFL. This is a good data set for demonstrating logistic regression.
 #'
 #'
 #' @format
-#' A data frame with 1425 rows and 9 columns:
+#' A data frame with 1425 observations and 9 variables:
 #' \describe{
 #'   \item{week}{week of the season}
 #'   \item{distance}{distance of the placekick in yards}
@@ -19,4 +19,31 @@
 #' }
 #' @source <http://www.chrisbilder.com/categorical/1stEdition/programs_and_data.html>
 #' @references Bilder CR and Loughin TM. (2015) _Analysis of Categorical Data with R_. CRC Press.
+#' @examples
+#' m <- glm(good ~ distance, data = placekick, family = binomial)
+#' exp(confint(m))
 "placekick"
+
+
+#' Wheat kernels
+#'
+#' Data on harvested wheat kernels. This is a good data set for demonstrating multinomial logistic regression.
+#'
+#'
+#' @format
+#' A data frame with 175 observations and 7 variables:
+#' \describe{
+#'   \item{class}{class of wheat: hard red winter (hrw) or soft red winter (srw)}
+#'   \item{density}{density of the kernel (numeric)}
+#'   \item{hardness}{hardness of the kernel (numeric)}
+#'   \item{size}{size of the kernel (numeric)}
+#'   \item{weight}{weight of the kernel (numeric)}
+#'   \item{moisture}{moisture of the kernel (numeric)}
+#'   \item{type}{condition of kernel: healthy, sprout or scab}
+#'
+#' }
+#' @source <http://www.chrisbilder.com/categorical/1stEdition/programs_and_data.html>
+#' @references Bilder CR and Loughin TM. (2015) _Analysis of Categorical Data with R_. CRC Press.
+#' @examples
+#' head(wheat)
+"wheat"

@@ -1,4 +1,4 @@
-## code to prepare `DATASET` dataset goes here
+## code to prepare `placekick` dataset goes here
 
 # http://www.chrisbilder.com/categorical/1stEdition/programs_and_data.html
 placekick <- read.csv("http://www.chrisbilder.com/categorical/1stEdition/Chapter2/Placekick.csv")
