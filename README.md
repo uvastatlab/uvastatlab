@@ -16,13 +16,33 @@ Install from GitHub:
 
 1. Open uvastatlab R project. (Clone from GitHub)
 2. Start a new R script and save to the R folder
-3. Write/edit your R function. Call external functions (ie, anything not from the {base} package) using the package::function() syntax.
+3. Write/edit your R function. Call external functions (i.e., anything not from the {base} package) using the package::function() syntax. Make sure the package is listed in the Imports section in the DESCRIPTION file. (See also the Dependencies section below.) DO NOT add packages that come with R, such as {stats} and {graphics} to the DESCRIPTION file. 
 4. Run `devtools::load_all()` (Ctrl/Cmd + Shift + L)
 5. Run function. Repeat steps 3 – 5 to edit and test your function.
 6. Add documentation for function. Put cursor somewhere in function and go to Code > Insert roxygen skeleton. Add title, parameters, example, etc. [This page](https://stuff.mit.edu/afs/athena/software/r/current/RStudio/resources/roxygen_help.html) is a nice quick reference for documentation tags.
 7. Run `devtools::document()` (Ctrl/Cmd + Shift + D) and preview documentation (`?function_name`). Edit documentation and run this again as needed to see changes. 
 8. Run `devtools::check()` (Ctrl/Cmd + Shift + E)
 9. Run `devtools::install()` to install package and restart R (Ctrl/Cmd + Shift + B). Load the package, test the function, review the documentation.
+
+## Dependencies
+
+If a function you're writing requires a function from another package (not including the recommended packages that come with R):
+
+- First, add the function in the DESCRIPTION file under Imports. For example,
+```
+Imports:
+    stringr
+```
+- Then do one of the following:
+	1. Call the function using the `package::function()` syntax, or
+	2. Add function to the Roxygen documentation using @importFrom. For example, to import `str_extract()` from the {stringr} package:
+`@importFrom stringr str_extract`
+
+You can also do the following to have it added automatically: `usethis::use_import_from("stringr", "str_extract")`
+
+- You can also import an entire package into your namespace using @import (example: `@import dplyr`) but that increases the chance of function name conflicts. The R packages book says, "save this for very special situations."
+Source: <https://r-pkgs.org/dependencies-in-practice.html#sec-dependencies-in-imports-r-code>
+
 
 ## Adding a data set to the package
 
