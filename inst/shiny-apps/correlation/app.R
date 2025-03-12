@@ -13,28 +13,28 @@ library(ggplot2)
 # Define UI
 ui <- fluidPage(
 
-   # Application title
-   titlePanel("Visualizing Correlation"),
+  # Application title
+  titlePanel("Visualizing Correlation"),
 
-   # Sidebar with a slider input for correlation
-   sidebarLayout(
-      sidebarPanel(
-         sliderInput("r",
-                     "Correlation:",
-                     min = -1,
-                     max = 1,
-                     value = 0,
-                     step = 0.01, ticks = FALSE),
-         actionButton("go",
-                      "New sample"),
-         helpText(includeMarkdown("correlation_help.md"))
-      ),
+  # Sidebar with a slider input for correlation
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("r",
+                  "Correlation:",
+                  min = -1,
+                  max = 1,
+                  value = 0,
+                  step = 0.01, ticks = FALSE),
+      actionButton("go",
+                   "New sample"),
+      helpText(includeMarkdown("correlation_help.md"))
+    ),
 
-      # Show a plot of the generated distribution
-      mainPanel(
-         plotOutput("corrPlot")
-      )
-   )
+    # Show a plot of the generated distribution
+    mainPanel(
+      plotOutput("corrPlot")
+    )
+  )
 )
 
 # Define server logic
@@ -49,14 +49,14 @@ server <- function(input, output) {
   })
 
   output$corrPlot <- renderPlot({
-     ggplot(re(), aes(x = V1, y = V2)) +
-       geom_point() +
-       xlim(c(-4,4)) +
-       ylim(c(-4,4)) +
-       coord_fixed() +
-       labs(y = "y", x = "x",
-            title = paste("Simulated data with correlation", input$r))
-   })
+    ggplot(re(), aes(x = V1, y = V2)) +
+      geom_point() +
+      xlim(c(-4,4)) +
+      ylim(c(-4,4)) +
+      coord_fixed() +
+      labs(y = "y", x = "x",
+           title = paste("Simulated data with correlation", input$r))
+  })
 }
 
 # Run the application
