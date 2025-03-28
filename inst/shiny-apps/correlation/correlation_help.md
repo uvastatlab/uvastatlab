@@ -1,11 +1,15 @@
+<!---
 <script type="text/javascript"
   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+-->
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 
 Correlation measures the strength of _linear association_ between two numeric 
 variables. It ranges in value from -1 to 1. Drag the slider to visualize 
-different correlations between _x_ and _y_. Click **New Sample** to generate new data 
-at a specified correlation strength.
+different correlations between _x_ and _y_. Click **New Sample** to generate new data at a specified correlation strength.
 
 The correlation coefficient is calculated by:
 

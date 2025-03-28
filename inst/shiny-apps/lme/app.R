@@ -10,9 +10,9 @@ ui <- fluidPage(
 
    sidebarLayout(
       sidebarPanel(
-        numericInput(inputId = "N",label = "Number of subjects",
+        numericInput(inputId = "N",label = "Number of subjects (max 10)",
                      value = 5, min = 3, max = 10, step = 1),
-        numericInput(inputId = "n",label = "Number of obs. per subject",
+        numericInput(inputId = "n",label = "Number of obs. per subject (max 15)",
                      value = 10, min = 3, max = 15, step = 1),
         radioButtons(inputId = "type","Model Type:",
                      choices = c("Random intercept" = "ri",
@@ -29,12 +29,12 @@ ui <- fluidPage(
         conditionalPanel(
           condition = "input.type == 'ri' | input.type == 'ris'",
           sliderInput("d1", "Intercept Std.Dev.",
-                      min = 0.1, max = 5, value = 0.1, step = 0.1)
+                      min = 1, max = 5, value = 1, step = 0.1)
         ),
         conditionalPanel(
           condition = "input.type == 'rs' | input.type == 'ris'",
           sliderInput("d2", "Slope Std.Dev.",
-                      min = 0.1, max = 5, value = 0.1, step = 0.1)
+                      min = 1, max = 5, value = 1, step = 0.1)
         ),
         conditionalPanel(
           condition = "input.type == 'ris'",
@@ -42,7 +42,7 @@ ui <- fluidPage(
                       min = -1, max = 1, value = 0, step = 0.1)
         ),
         sliderInput("r","Residuals:",
-                    min = 0.01, max = 5, value = 0.01, step = 0.1),
+                    min = 1, max = 5, value = 1, step = 0.1),
         actionButton(inputId = "gen", "Generate new data")
 
       ),
@@ -118,7 +118,7 @@ server <- function(input, output) {
      ggplot(dat, aes(x = x, y = y, color = id)) +
        geom_point() +
        geom_abline(slope = fixef(mod)[2],
-                   intercept = fixef(mod)[1], size = 2) +
+                   intercept = fixef(mod)[1], linewidth = 2) +
        geom_abline(mapping = aes(slope = b, intercept = a, color = id),
                    data = dat2) +
        ylim(c(-40,40))

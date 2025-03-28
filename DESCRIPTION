@@ -4,7 +4,8 @@ Title: Miscellaneous functions for the UVA Library StatLab
 Version: 0.1.0
 Authors@R: c(
     person("Clay", "Ford", , "jcf2d@virginia.edu", role = c("aut", "cre")),
-    person("Jacob", "Goldstein-Greenwood", role = "aut"))
+    person("Jacob", "Goldstein-Greenwood", role = "aut"),
+    person("Kadiyala", "Ethan", role = "aut"))
 Description: A collection of R functions and shiny apps for the UVA StatLab.
 License: MIT + file LICENSE
 URL: https://github.com/uvastatlab/uvastatlab
@@ -12,7 +13,6 @@ Depends: R (>= 4.1.0)
 Imports:
     stringr,
     stringi,
-    httr,
     rvest,
     rmarkdown,
     shiny
