@@ -22,6 +22,8 @@ theme_statlab1(
 \arguments{
 \item{title_face}{Character. Font for plot title}
 
+\item{title_size}{Numeric. Font size of title}
+
 \item{axis_color}{Character. Color for axis text and lines}
 
 \item{background_color}{Character. Fill color for the plot background}
