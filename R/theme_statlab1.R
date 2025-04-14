@@ -12,7 +12,7 @@
 #' @param text_size Numeric. Font size for axis text, legend text, and caption
 #' @param base_line_size Numeric. Base line width for plot lines
 #' @param base_rect_size Numeric. Border width for rectangular elements
-#' @param use_palette Logical. TRUE for adding color statlab_palette
+#' @param use_palette Logical. TRUE for adding color statlab_palette. Use with 7 groups or less. Default is FALSE.
 #' @return A StatLab ggplot2 theme that can be added to a ggplot2 object
 #'
 #' @seealso
@@ -40,7 +40,8 @@ theme_statlab1 <- function(title_face = "bold",
                            use_palette = FALSE) {
 
   # Define the custom color palette
-  statlab_palette <- c("blue4", "darkorange", "goldenrod1", "darkslategray3")
+  statlab_palette <- c("blue4", "darkorange", "goldenrod1", "gray62",
+                       "peachpuff", "peru", "slategray2")
 
   theme <- ggplot2::theme(
     #Base elements
@@ -88,13 +89,12 @@ theme_statlab1 <- function(title_face = "bold",
     #Spacing & margins
     plot.margin = margin(5, 5, 5, 5)
   )
-
-    # Return theme + palette (if requested)
-  if (use_palette) {
-    return(list(theme,
-                ggplot2::scale_color_manual(values = statlab_palette),
-                ggplot2::scale_fill_manual(values = statlab_palette)))
-  } else {
-    return(theme)
+     # Return theme + palette (if requested)
+    if (use_palette) {
+      return(list(theme,
+                  ggplot2::scale_color_manual(values = statlab_palette),
+                  ggplot2::scale_fill_manual(values = statlab_palette)))
+    } else {
+      return(theme)
+    }
   }
-}
