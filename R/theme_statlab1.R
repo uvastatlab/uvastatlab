@@ -13,7 +13,7 @@
 #' @param text_size Numeric. Font size for axis text, legend text, and caption
 #' @param base_line_size Numeric. Base line width for plot lines
 #' @param base_rect_size Numeric. Border width for rectangular elements
-#' @param use_palette Logical. TRUE for adding color statlab_palette. Use with 7 groups or less. Default is FALSE.
+#' @param use_palette Logical. TRUE to use color statlab_palette. Use with 7 groups or less. Default is FALSE.
 #' @return A StatLab ggplot2 theme that can be added to a ggplot2 object
 #'
 #' @seealso

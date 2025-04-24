@@ -42,7 +42,7 @@ theme_statlab1(
 
 \item{base_rect_size}{Numeric. Border width for rectangular elements}
 
-\item{use_palette}{Logical. TRUE for adding color statlab_palette}
+\item{use_palette}{Logical. TRUE to use color statlab_palette. Use with 7 groups or less. Default is FALSE.}
 }
 \value{
 A StatLab ggplot2 theme that can be added to a ggplot2 object
