@@ -4,10 +4,16 @@
 \alias{drupal}
 \title{Prepare blog post for UVA StatLab Drupal site}
 \usage{
-drupal(file)
+drupal(file, name, date, title)
 }
 \arguments{
 \item{file}{an HTML file knitted from R Markdown}
+
+\item{name}{author full name in quotes (e.g., "Clay Ford")}
+
+\item{date}{date in quotes (e.g., "May 30, 2025")}
+
+\item{title}{title of author in quotes (e.g., "Statistical Research Consultant")}
 }
 \value{
 An HTML file of the same name as the file argument with "Drupal_" prepended. Will be written to the current working directory. Open the file with a text editor and copy and paste contents into a new Drupal post.
@@ -25,7 +31,10 @@ output:
 }
 \examples{
 \dontrun{
-drupal("somefile.html")
-# Drupal_somefile.html output to working directory.
+drupal(file = "tweedie.html",
+       name = "Clay Ford",
+       date = "May 30, 2025",
+       title = "Statistical Research Consultant")
+# Drupal_tweedie.html output to working directory.
 }
 }

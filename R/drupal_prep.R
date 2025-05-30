@@ -11,16 +11,23 @@
 #'     pandoc_args: ["--wrap=none"]}
 #'
 #' @param file an HTML file knitted from R Markdown
+#' @param name author full name in quotes (e.g., "Clay Ford")
+#' @param date date in quotes (e.g., "May 30, 2025")
+#' @param title title of author in quotes (e.g., "Statistical Research Consultant")
+#'
 #'
 #' @return An HTML file of the same name as the file argument with "Drupal_" prepended. Will be written to the current working directory. Open the file with a text editor and copy and paste contents into a new Drupal post.
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' drupal("somefile.html")
-#' # Drupal_somefile.html output to working directory.
+#' drupal(file = "tweedie.html",
+#'        name = "Clay Ford",
+#'        date = "May 30, 2025",
+#'        title = "Statistical Research Consultant")
+#' # Drupal_tweedie.html output to working directory.
 #' }
-drupal <- function(file) {
+drupal <- function(file, name, date, title) {
   if(!grepl(".(htm|html)$", file)) stop("Function requires HTML file.")
 
   # TIP: use writeClipboard(p) to review results when debugging (Windows only)
@@ -67,6 +74,26 @@ drupal <- function(file) {
   p <- gsub(pattern = pattern,
             replacement = replacement,
             p, perl = TRUE)
+
+  # add signature
+
+  sig <- paste0("<hr><p><em>", name,
+                "</em><br><em>", title,
+                "</em><br><em>University of Virginia Library</em><br><em>",
+                date, "</em></p>")
+
+  # check for footnotes
+  if(grepl(pattern = "<div class=\"footnotes", x = p, fixed = TRUE)){
+    end <- regmatches(p, regexpr(pattern = "<div class=\"footnotes [\\s\\S]*",
+                                 text = p, perl = TRUE))
+    insert <- paste0(sig, end)
+    p <- sub(pattern = "<div class=\"footnotes [\\s\\S]*",
+             replacement = insert, x = p, perl = TRUE)
+
+    # if no footnotes, add to end
+  } else {
+    p <- paste0(p, sig)
+  }
 
   writeLines(p, con = paste0("Drupal_", basename(file)), useBytes = TRUE)
 }
