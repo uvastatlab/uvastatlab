@@ -80,15 +80,14 @@ drupal <- function(file, name, date, title) {
   sig <- paste0("<hr><p><em>", name,
                 "</em><br><em>", title,
                 "</em><br><em>University of Virginia Library</em><br><em>",
-                date, "</em></p>")
+                date, "</em></p><div class=\"footnotes footnotes-end-of-document\">")
 
   # check for footnotes
   if(grepl(pattern = "<div class=\"footnotes", x = p, fixed = TRUE)){
-    end <- regmatches(p, regexpr(pattern = "<div class=\"footnotes [\\s\\S]*",
-                                 text = p, perl = TRUE))
-    insert <- paste0(sig, end)
-    p <- sub(pattern = "<div class=\"footnotes [\\s\\S]*",
-             replacement = insert, x = p, perl = TRUE)
+
+    # if footnotes present, add signature before footnotes
+    p <- sub(pattern = "<div class=\"footnotes footnotes-end-of-document\">",
+             replacement = sig, x = p)
 
     # if no footnotes, add to end
   } else {
