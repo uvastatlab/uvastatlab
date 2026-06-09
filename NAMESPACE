@@ -2,8 +2,4 @@
 
 export(drupal)
 export(get_statlab_article_metadata)
-export(pseudo_data_gen)
 export(report)
-export(runShinyApp)
-export(shade)
-export(theme_statlab1)
